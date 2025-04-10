@@ -11,6 +11,7 @@ body {
     color: var(--tg-theme-text-color, #000); /* Используем цвет текста Telegram */
 }
 
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,6 +77,15 @@ button {
     font-size: 1em;
     cursor: pointer;
     border: none;
+    border-radius: 8px;
+    background-color: var(--tg-theme-button-color, #007bff); /* Цвет кнопки Telegram */
+    color: var(--tg-theme-button-text-color, white); /* Цвет текста кнопки Telegram */
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--tg-theme-secondary-bg-color, #0056b3); /* Цвет кнопки при наведении */
+}
 
 .button-container {
     display: flex;
@@ -87,15 +97,6 @@ button {
 
 .button-container button {
     width: 45%; /* Ширина каждой кнопки */
-}
-    border-radius: 8px;
-    background-color: var(--tg-theme-button-color, #007bff); /* Цвет кнопки Telegram */
-    color: var(--tg-theme-button-text-color, white); /* Цвет текста кнопки Telegram */
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: var(--tg-theme-secondary-bg-color, #0056b3); /* Цвет кнопки при наведении */
 }
 
 /* Адаптивность */
