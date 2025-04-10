@@ -1,0 +1,9 @@
+{
+  "name": "Коми Карточки",
+  "short_name": "КомиКарты",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007bff",
+  "description": "Изучение коми языка с помощью карточек."
+}
