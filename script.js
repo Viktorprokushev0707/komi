@@ -15,6 +15,7 @@ const flashcard = document.getElementById('flashcard');
 const komiText = document.getElementById('komi-text');
 const russianText = document.getElementById('russian-text');
 const nextButton = document.getElementById('next-button');
+const flipButton = document.getElementById('flip-button'); // Добавили кнопку переворота
 
 function displayCard(index) {
     if (index >= 0 && index < cards.length) {
@@ -47,7 +48,11 @@ function nextCard() {
 }
 
 // Обработчик клика по карточке для переворота
-flashcard.addEventListener('click', flipCard);
+// Убрали переворот по клику на карточку
+// flashcard.addEventListener('click', flipCard);
+
+// Добавили переворот по клику на кнопку "Перевернуть"
+flipButton.addEventListener('click', flipCard);
 
 // Обработчик клика по кнопке "Следующая"
 nextButton.addEventListener('click', nextCard);

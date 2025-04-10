@@ -11,11 +11,9 @@ body {
     color: var(--tg-theme-text-color, #000); /* Используем цвет текста Telegram */
 }
 
-.container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    perspective: 1000px; /* Для 3D эффекта переворота */
     width: 100%;
     max-width: 400px; /* Ограничим максимальную ширину */
 }
@@ -28,6 +26,7 @@ body {
     cursor: pointer;
     margin-bottom: 20px;
     position: relative; /* Для позиционирования внутренних элементов */
+    perspective: 1000px; /* Для 3D эффекта переворота */
 }
 
 .card-inner {
@@ -77,6 +76,18 @@ button {
     font-size: 1em;
     cursor: pointer;
     border: none;
+
+.button-container {
+    display: flex;
+    justify-content: space-around; /* Распределяем кнопки */
+    width: 90%; /* Ширина контейнера кнопок */
+    max-width: 400px;
+    margin-top: 10px; /* Небольшой отступ сверху */
+}
+
+.button-container button {
+    width: 45%; /* Ширина каждой кнопки */
+}
     border-radius: 8px;
     background-color: var(--tg-theme-button-color, #007bff); /* Цвет кнопки Telegram */
     color: var(--tg-theme-button-text-color, white); /* Цвет текста кнопки Telegram */
