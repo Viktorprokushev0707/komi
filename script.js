@@ -6,8 +6,25 @@ Telegram.WebApp.expand();
 const cards = [
     { komi: "Позьӧ-ӧ латте сёйны?", russian: "Можно мне латте?" },
     { komi: "Лоас-ӧ гожӧм?", russian: "А лето то будет?" },
-    { komi: "Пыр нин!", russian: "Отвали уже!" }
+    { komi: "Пыр нин!", russian: "Отвали уже!" },
+    { komi: "Ме сӧмын видзӧда, ог торк", russian: "Я просто смотрю, не трогаю" },
+    { komi: "Кӧні менам кофе?", russian: "Где мой кофе?" },
+    { komi: "Мед некутшӧм драма оз ло", russian: "Давай без драм" },
+    { komi: "Тайӧ менам гӧрд флаг", russian: "Это мой красный флаг" },
+    { komi: "Яснӧй!", russian: "Чётенько!" }
 ];
+
+// Shuffle the cards array
+function shuffleCards(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// Shuffle cards initially
+shuffleCards(cards);
 
 // Current card index and flip state
 let currentCardIndex = 0;
@@ -22,6 +39,7 @@ const flipButton = document.getElementById('flip-button');
 
 // Display card with given index
 function displayCard(index) {
+    // Always show a valid card
     if (index >= 0 && index < cards.length) {
         // Set texts
         komiText.textContent = cards[index].komi;
@@ -38,19 +56,6 @@ function displayCard(index) {
         nextButton.disabled = false;
         flipButton.style.display = 'inline-block';
         nextButton.style.display = 'inline-block';
-    } else {
-        // No more cards
-        komiText.textContent = "Карточки закончились!";
-        russianText.textContent = "";
-        
-        // Hide buttons
-        flipButton.style.display = 'none';
-        nextButton.style.display = 'none';
-        
-        // Reset flip state
-        if (flashcard.classList.contains('flipped')) {
-            flashcard.classList.remove('flipped');
-        }
     }
 }
 
@@ -60,9 +65,15 @@ function flipCard() {
     isFlipped = !isFlipped;
 }
 
-// Go to next card
+// Go to next card - show a random card
 function nextCard() {
-    currentCardIndex++;
+    // Get a random index different from the current one
+    let newIndex;
+    do {
+        newIndex = Math.floor(Math.random() * cards.length);
+    } while (newIndex === currentCardIndex && cards.length > 1);
+    
+    currentCardIndex = newIndex;
     displayCard(currentCardIndex);
 }
 
@@ -75,8 +86,8 @@ let touchstartX = 0;
 let touchendX = 0;
 
 function handleGesture() {
-    // Swipe left - next card
-    if (touchendX < touchstartX - 50 && currentCardIndex < cards.length - 1) {
+    // Swipe left - next card (always works since we're showing random cards infinitely)
+    if (touchendX < touchstartX - 50) {
         nextCard();
     }
 }
